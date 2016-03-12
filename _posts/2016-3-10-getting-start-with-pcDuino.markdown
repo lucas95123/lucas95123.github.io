@@ -1,3 +1,12 @@
+---
+layout: post
+title:  "Getting started with pcDuino acadia"
+date:   2016-3-12 00:00:00 +0700
+categories: Embedded system
+tags: pcDuino
+- Getting started With pcDuino Acadia
+---
+
 # Getting started With pcDuino Acadia
 ####In this guide, I will show you how to get start with pcDuino acadia including:
 1. how to boot
