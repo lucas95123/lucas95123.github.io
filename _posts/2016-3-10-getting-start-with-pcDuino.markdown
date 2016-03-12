@@ -3,8 +3,7 @@ layout: post
 title:  "Getting started with pcDuino acadia"
 date:   2016-3-12 00:00:00 +0700
 categories: Embedded system
-tags: pcDuino
-- Getting started With pcDuino Acadia
+tags: -pcDuino 
 ---
 
 # Getting started With pcDuino Acadia
