@@ -1,110 +1,48 @@
 ---
+layout: default
 title: 404
-exclude_from_nav: true
+permalink: /404.html
 ---
 
-<!doctype html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Error!</title>
-    <style>
-      html {
-  font-size: 62.5%;
-}
+<div class="container-fluid index error">
+  <div class="row">
 
-* {
-  margin: 0;
-  padding: 0;
-  font-size: 100%;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+    <div class="col-md-12 content-panel articles">
+      <h1 class="header author-header">404</h1>
 
-body {
-  padding: 60px;
-  background: #fafafa;
-  font-size: 150%;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: 300;
-  line-height: 1.5;
-}
+      <div class="error-text">
+        Sorry but this page doesn't seem to exist.
+      </div>
 
-#wrap {
-  width: 100%;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 30px;
-  background: #fff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-  border-top: 3px solid #b00f08;
-}
+      <div class="error-text">
+        <a href="{{ site.baseurl }}/">Home</a> |
+        <a href="{{ site.baseurl }}/posts/">All Posts</a> |
+        <a href="{{ site.baseurl }}/search/">Search</a>
+      </div>
 
-hr {
-  display: none;
-}
-
-p {
-  margin: 0 0 15px;
-}
-
-a {
-  color: #731217;
-}
-
-a:hover {
-  color: #b00f08;
-}
-
-h1 {
-  margin: 0 0 15px;
-  font-size: 240%;
-  font-weight: 300;
-  color: #731217;
-}
-
-.content {
-  padding: 15px;
-  margin: 15px 0;
-  background: #eee;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  font-weight: bold;
-  color: #666;
-}
-
-pre {
-  overflow: auto;
-  padding: 15px;
-  background: #fafafa;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  line-height: 1.8;
-  color: rgba(0, 0, 0, 0.8);
-}
-
-pre.exception {
-  background-color: #ffeded;
-}
-
-pre em {
-  font-style: normal;
-  color: rgba(0, 0, 0, 0.5);
-  border-bottom: 1px dotted;
-  cursor: help;
-}
-    </style>
-  </head>
-  <body>
-    <div id="wrap">
-      <h1>Error!</h1>
-      <p>The requested url <script>
-         document.write(window.location.pathname);
-       </script> was not found.</p>
-
-   
-    
-
+      {% include social_links.html %}
 
     </div>
-  </body>
-</html>
+
+  </div>
+
+  <div class="content-panel related">
+    {% for post in site.posts limit:1 %}
+      <div class="related-header">
+        <a href="{{ site.baseurl }}{{ post.url }}">Suggested Article</a>
+      </div>
+      <div class="title">
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      </div>
+      <div class="excerpt">
+         {% if post.summary %}
+          {{ post.summary | strip_html | truncatewords:30 }}
+         {% else %}
+          {{ post.excerpt | strip_html | truncatewords:30 }}
+         {% endif %}
+        <a href="{{ site.baseurl }}{{ post.url }}">Continue Reading</a>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
