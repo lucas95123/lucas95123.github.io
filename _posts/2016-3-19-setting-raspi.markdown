@@ -1,12 +1,11 @@
 ---
 layout: post
-title:  "Setting up raspberry"
-subtitle: "a tutorial for starting up with raspberry"
-date:   2016-03-19 13:34:01
+title:  "开始使用树莓派，开机启动及基础配置"
+subtitle: "陆宽"
+date:   2016-03-18 23:34:01
 categories: [Embedded, Raspberry]
 ---
-
-#实验目的
+# 目的
 
 1. 了解嵌入式板卡一般情况；
 2. 熟悉pcDuino的供电等接线方式；
@@ -21,12 +20,14 @@ categories: [Embedded, Raspberry]
 11. 熟悉嵌入式板卡的Linux下的编程环境；
 12. 了解远程访问嵌入式板卡图形桌面的方式。
 
-#实验器材
+---
 
-**硬件**
+# 器材
+
+__硬件__
 
 |序号|名称|数量|
-|--|--|--|
+|--|:--:|--|
 |1|RaspberryPi|1|
 |2|microUSB线|1|
 |3|USB-TTL串口线一根（PL2303芯片）|1|
@@ -36,18 +37,20 @@ categories: [Embedded, Raspberry]
 |7|HDMI显示器|1|
 |8|HDMI线|1|
 |9|USB键盘|1|
-|10|USB鼠标|1|
+|10|USB鼠标|1|  
 
-**软件**
+__软件__
 
-|名称|
-|---|
-|[PL2303驱动 for Win/Mac](http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=225&pcid=41)|
-|minicom for Mac|
-|[Putty for Windows](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)|
-|交叉编译软件|
+|序号|名称|
+|:--|:---:|
+|1|[PL2303驱动 for Win/Mac](http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=225&pcid=41)|
+|2|minicom for Mac|
+|3|[Putty for Windows](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)|
+|4|交叉编译软件|
 
-#实验步骤
+---
+
+# 步骤
 
 1. 在PC上安装好USB串口驱动和串口终端软件；
 	- [下载PL2303驱动软件](http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=229&pcid=41)
@@ -61,32 +64,32 @@ categories: [Embedded, Raspberry]
 	- 在minicom中设置Serial port为上图
 	![](/Users/kuanlu/Desktop/嵌入式系统/snap1.png)
 2. 按照图纸要求，将USB串口线与树莓派连接好，并连接好以太网（如果打算采用WiFi，可不连接以太 网）。如有 条件，接上HDMI线和HDMI显示器；
-  - __连接示意图__
-![](/Users/kuanlu/Desktop/嵌入式系统/连接线.png)
-  - __实际连接照片1__
-![](/Users/kuanlu/Desktop/嵌入式系统/FullSizeRender.jpg)
-  - __实际连接照片2__
-![](/Users/kuanlu/Desktop/嵌入式系统/FullSizeRender 2.jpg)
-  - __HDMI显示__
-![](/Users/kuanlu/Desktop/嵌入式系统/FullSizeRender 3.jpg)
-3. 给pcDuino上电，记录启动过程的输出以及解释；
+	- __连接示意图__
+	![](/Users/kuanlu/Desktop/嵌入式系统/连接线.png)
+  	- __实际连接照片1__
+	![](/Users/kuanlu/Desktop/嵌入式系统/FullSizeRender.jpg)
+  	- __实际连接照片2__
+	![](/Users/kuanlu/Desktop/嵌入式系统/FullSizeRender 2.jpg)
+  	- __HDMI显示__
+	![](/Users/kuanlu/Desktop/嵌入式系统/FullSizeRender 3.jpg)
+3. 给pcDuino上电，记录启动过程的输出以及解释，解释见每一行后面的注释；
 <pre></code>Uncompressing Linux... done, booting the kernel.
-[    0.000000] Booting Linux on physical CPU 0x0
-[    0.000000] Initializing cgroup subsys cpu
+[    0.000000] Booting Linux on physical CPU 0x0     //Linux从物理地址0开始执行
+[    0.000000] Initializing cgroup subsys cpu        //启动cpu
 [    0.000000] Initializing cgroup subsys cpuacct
-[    0.000000] Linux version 3.18.7+ (dc4@dc4-XPS13-9333) (gcc version 4.8.3 20140303 (prerelease) (crosstool-NG linaro-1.13.1+bzr2650 - Linaro GCC 2014.03) ) #755 PREEMPT Thu Feb 12 17:14:31 GMT 2015
-[    0.000000] CPU: ARMv6-compatible processor [410fb767] revision 7 (ARMv7), cr=00c5387d
+[    0.000000] Linux version 3.18.7+ (dc4@dc4-XPS13-9333) (gcc version 4.8.3 20140303 (prerelease) (crosstool-NG linaro-1.13.1+bzr2650 - Linaro GCC 2014.03) ) #755 PREEMPT Thu Feb 12 17:14:31 GMT 2015                                //Linux内核版本是3.18.7 gcc版本是4.8.3
+[    0.000000] CPU: ARMv6-compatible processor [410fb767] revision 7 (ARMv7), cr=00c5387d  //CPU是 ARMv6架构的
 [    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
-[    0.000000] Machine model: Raspberry Pi Model B
-[    0.000000] cma: Reserved 8 MiB at 0x1b800000
-[    0.000000] Memory policy: Data cache writeback
+[    0.000000] Machine model: Raspberry Pi Model B   //机器型号是树莓派Model B
+[    0.000000] cma: Reserved 8 MiB at 0x1b800000     
+[    0.000000] Memory policy: Data cache writeback   //内存cache的策略，写回
 [    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 113792
 [    0.000000] Kernel command line: dma.dmachans=0x7f35 bcm2708_fb.fbwidth=656 bcm2708_fb.fbheight=416 bcm2708.boardrev=0xf bcm2708.serial=0x21630876 smsc95xx.macaddr=B8:27:EB:63:08:76 bcm2708_fb.fbswap=1 sdhci-bcm2708.emmc_clock_freq=250000000 vc_mem.mem_base=0x1ec00000 vc_mem.mem_size=0x20000000  dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
-[    0.000000] PID hash table entries: 2048 (order: 1, 8192 bytes)
-[    0.000000] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
-[    0.000000] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
-[    0.000000] Memory: 437208K/458752K available (5926K kernel code, 358K rwdata, 1876K rodata, 340K init, 734K bss, 21544K reserved)
-[    0.000000] Virtual kernel memory layout:
+[    0.000000] PID hash table entries: 2048 (order: 1, 8192 bytes)   //进程哈希表的起始地址
+[    0.000000] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes) //目录项的哈希表的起始地址
+[    0.000000] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)   //索引节点的哈希表的起始地址
+[    0.000000] Memory: 437208K/458752K available (5926K kernel code, 358K rwdata, 1876K rodata, 340K init, 734K bss, 21544K reserved)    //内存大小437MB
+[    0.000000] Virtual kernel memory layout:    //虚拟内存的地址映射
 [    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
 [    0.000000]     fixmap  : 0xffc00000 - 0xffe00000   (2048 kB)
 [    0.000000]     vmalloc : 0xdc800000 - 0xff000000   ( 552 MB)
@@ -107,8 +110,8 @@ categories: [Embedded, Raspberry]
 [    0.001534] pid_max: default: 32768 minimum: 301
 [    0.001909] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
 [    0.001973] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
-[    0.002982] Initializing cgroup subsys memory
-[    0.003075] Initializing cgroup subsys devices
+[    0.002982] Initializing cgroup subsys memory   //初始化其他子系统
+[    0.003075] Initializing cgroup subsys devices  
 [    0.003135] Initializing cgroup subsys freezer
 [    0.003190] Initializing cgroup subsys net_cls
 [    0.003241] Initializing cgroup subsys blkio
@@ -133,7 +136,7 @@ categories: [Embedded, Raspberry]
 [    0.205909] bcm_power_request(0, 8)
 [    0.706651] bcm_mailbox_read -> 00000080, 0
 [    0.706699] bcm_power_request -> 0
-[    0.706899] Serial: AMBA PL011 UART driver
+[    0.706899] Serial: AMBA PL011 UART driver   //启动串口
 [    0.707134] dev:f1: ttyAMA0 at MMIO 0x20201000 (irq = 83, base_baud = 0) is a PL011 rev3
 [    1.096559] console [ttyAMA0] enabled
 [    1.169621] SCSI subsystem initialized
@@ -143,7 +146,7 @@ categories: [Embedded, Raspberry]
 [    1.192254] Switched to clocksource stc
 [    1.226652] FS-Cache: Loaded
 [    1.229971] CacheFiles: Loaded
-[    1.250189] NET: Registered protocol family 2
+[    1.250189] NET: Registered protocol family 2    //配置网络
 [    1.256144] TCP established hash table entries: 4096 (order: 2, 16384 bytes)
 [    1.263561] TCP bind hash table entries: 4096 (order: 2, 16384 bytes)
 [    1.270122] TCP: Hash tables configured (established 4096 bind 4096)
@@ -206,20 +209,20 @@ categories: [Embedded, Raspberry]
 [    2.086801] dwc_otg bcm2708_usb: new USB bus registered, assigned bus number 1
 [    2.095792] dwc_otg bcm2708_usb: irq 32, io mem 0x00000000
 [    2.102977] Init: Port Power? op_state=1
-[    2.108485] Init: Power Port (0)
+[    2.108485] Init: Power Port (0)        //配置usb设备
 [    2.113707] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
 [    2.122161] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
 [    2.131051] usb usb1: Product: DWC OTG Controller
 [    2.137403] usb usb1: Manufacturer: Linux 3.18.7+ dwc_otg_hcd
 [    2.144786] usb usb1: SerialNumber: bcm2708_usb
-[    2.152043] hub 1-0:1.0: USB hub found
+[    2.152043] hub 1-0:1.0: USB hub found 
 [    2.157655] hub 1-0:1.0: 1 port detected
 [    2.164554] usbcore: registered new interface driver usb-storage
 [    2.172787] mousedev: PS/2 mouse device common for all mice
 [    2.180804] bcm2835-cpufreq: min=700000 max=700000
 [    2.187706] sdhci: Secure Digital Host Controller Interface driver
 [    2.195619] sdhci: Copyright(c) Pierre Ossman
-[    2.201848] DMA channels allocated for the MMC driver
+[    2.201848] DMA channels allocated for the MMC driver    //为片上存储开启DMA
 [    2.242336] Load BCM2835 MMC driver
 [    2.249407] sdhci-pltfm: SDHCI platform and OF driver helper
 [    2.265253] ledtrig-cpu: registered to indicate activity on CPUs
@@ -238,9 +241,9 @@ categories: [Embedded, Raspberry]
 [    2.365179] Indeed it is in host mode hprt0 = 00021501
 [    2.376596] mmc0: host does not support reading read-only switch, assuming write-enable
 [    2.404429] mmc0: new high speed SDHC card at address b368
-[    2.422369] mmcblk0: mmc0:b368 SDC   7.51 GiB
+[    2.422369] mmcblk0: mmc0:b368 SDC   7.51 GiB    //SD卡大小
 [    2.433879]  mmcblk0: p1 p2
-[    2.499426] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
+[    2.499426] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)  //文件系统为EXT-4
 [    2.511082] VFS: Mounted root (ext4 filesystem) readonly on device 179:2.
 [    2.521520] devtmpfs: mounted
 [    2.527433] Freeing unused kernel memory: 340K (c07a7000 - c07fc000)
@@ -266,16 +269,28 @@ categories: [Embedded, Raspberry]
 [    7.898316] usbcore: registered new interface driver rtl8192cu
 [   10.788988] EXT4-fs (mmcblk0p2): re-mounted. Opts: (null)
 [   11.267126] EXT4-fs (mmcblk0p2): re-mounted. Opts: (null)
-Raspbian GNU/Linux 7 raspberrypi ttyAMA0
-raspberrypi login:</code></pre>
+Raspbian GNU/Linux 7 raspberrypi ttyAMA0   //终端信息，通过串口登录的
+raspberrypi login:
+</code></pre>
 
-树莓派基本信息
-
+__树莓派基本信息__  
+CPU信息通过`lscpu`命令获得  
+![](/Users/kuanlu/Desktop/嵌入式系统/snap1001.png)  
+或者通过`cat /proc/cpuinfo`  
+![](/Users/kuanlu/Desktop/嵌入式系统/snap1002.png)  
+内存信息通过`free -h`获得（以MB为单位）  
+![](/Users/kuanlu/Desktop/嵌入式系统/snap1003.png)  
+或者以`cat /proc/meminfo`获得  
+![](/Users/kuanlu/Desktop/嵌入式系统/snap1004.png)  
+磁盘信息以`lsblk`获得  
+![](/Users/kuanlu/Desktop/嵌入式系统/snap1005.png)
+	 
 |硬件|参数|
 |--|--|
-|CPU型号||
-|时钟频率||
-|内存大小||
+|CPU型号|ARMv6 compatible|
+|时钟频率|700MHZ|
+|内存|437MB|
+|磁盘|7.5GB|
 
 4. 从终端登陆树莓派的Linux  
 用户名：pr 密码：raspberry
@@ -400,14 +415,7 @@ sudo /etc/init.d/samba retsart
 	如果搭建成功，显示如下
 	![](/Users/kuanlu/Desktop/嵌入式系统/snap18.png)
 16. 交叉编译C语言的浮点运算程序到pcDuino上去运行，证明所编译的程序是ARM的；
-	- 首先编辑源代码如下
-	<pre><code>#include <stdio.h>  
-int main(void)  
-{  
-    float pi = 3.14;      
-    printf("Hello World\n");  
-    printf("%.2f\n",2*pi);  
-} </code></pre>
+	- 首先编辑一段带有浮点数运算的源代码
 	- 在终端中用交叉编译工具编译
 	<pre><code>arm-linux-gnueabihf-gcc test.c -o test</code></pre>
 	- 证明编译的程序是ARM的，汇编成汇编指令
@@ -496,27 +504,11 @@ main:
 	![](/Users/kuanlu/Desktop/嵌入式系统/snap21.png)
 	![](/Users/kuanlu/Desktop/嵌入式系统/snap20.png)
 
-#拓展步骤
+---
+
+# 拓展步骤
 1. 尝试HDMI-VGA线  
 	![](/Users/kuanlu/Desktop/嵌入式系统/hdmi.png)
 2. 配置SAMBA 见上文samba配置文件，已经实现了PC端写共享文件
 5. 嵌入式GUI IDE C++ IDE codeblocks
 	![](/Users/kuanlu/Desktop/嵌入式系统/C++code.png)
-
-#实验报告要求
-`画出你所实际实施的连接示意图；`  
-`给出实际拍摄的板卡连接照片；`  
-`给出所用的器材的列表；`
-给出拷贝得到的pcDuino启动时的输出文字，并逐行解释；
-如何通过Linux获得硬件数据，截屏给出获得的硬件数据，如CPU型号、时钟频率、内存大小等；
-`给出你的网络配置参数`，`截屏给出从pcDuino和PC两端得到的网络已连接的证明；`
-`给出你的SSH配置文件，并解释其中内容；`
-`存在多个登陆时，如何看到不同端口的登陆，给出截屏结果；`
-`给出嵌入式板卡上的SAMBA配置文件内容，并逐行解释；`
-`给出用各种方式传递文件的过程，并从易用性、速度、安全等方面做比较；`
-`给出你所选择的交叉编译环境的情况：来源、安装过程等；`
-`给出交叉编译的程序的情况，并证明它是ARM/MIPS的可执行文件；`
-`给出嵌入式板卡本机开发环境的情况，给出一或两种语言编程的例子和结果；`
-`给出你尝试的远程图形桌面的方式：嵌入式板卡端的配置方法，PC端软件的获得，使用结果截屏等。`
-`说明其他所做的扩展内容的情况。`
-
