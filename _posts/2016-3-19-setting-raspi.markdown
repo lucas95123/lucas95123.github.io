@@ -62,16 +62,16 @@ __软件__
 	- 配置minicom 在终端下输入如下命令
 	<pre><code> $ minicom -s </code></pre>
 	- 在minicom中设置Serial port为上图
-	![](/Users/kuanlu/Desktop/嵌入式系统/snap1.png)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/snap1.png)
 2. 按照图纸要求，将USB串口线与树莓派连接好，并连接好以太网（如果打算采用WiFi，可不连接以太 网）。如有 条件，接上HDMI线和HDMI显示器；
 	- __连接示意图__
-	![](/Users/kuanlu/Desktop/嵌入式系统/连接线.png)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/connect.png)
   	- __实际连接照片1__
-	![](/Users/kuanlu/Desktop/嵌入式系统/FullSizeRender.jpg)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/FullSizeRender.jpg)
   	- __实际连接照片2__
-	![](/Users/kuanlu/Desktop/嵌入式系统/FullSizeRender 2.jpg)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/FullSizeRender 2.jpg)
   	- __HDMI显示__
-	![](/Users/kuanlu/Desktop/嵌入式系统/FullSizeRender 3.jpg)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/FullSizeRender 3.jpg)
 3. 给pcDuino上电，记录启动过程的输出以及解释，解释见每一行后面的注释；
 <pre></code>Uncompressing Linux... done, booting the kernel.
 [    0.000000] Booting Linux on physical CPU 0x0     //Linux从物理地址0开始执行
@@ -275,15 +275,15 @@ raspberrypi login:
 
 __树莓派基本信息__  
 CPU信息通过`lscpu`命令获得  
-![](/Users/kuanlu/Desktop/嵌入式系统/snap1001.png)  
+![](http://7xs84e.com1.z0.glb.clouddn.com/snap1001.png)  
 或者通过`cat /proc/cpuinfo`  
-![](/Users/kuanlu/Desktop/嵌入式系统/snap1002.png)  
+![](http://7xs84e.com1.z0.glb.clouddn.com/snap1002.png)  
 内存信息通过`free -h`获得（以MB为单位）  
-![](/Users/kuanlu/Desktop/嵌入式系统/snap1003.png)  
+![](http://7xs84e.com1.z0.glb.clouddn.com/snap1003.png)  
 或者以`cat /proc/meminfo`获得  
-![](/Users/kuanlu/Desktop/嵌入式系统/snap1004.png)  
+![](http://7xs84e.com1.z0.glb.clouddn.com/snap1004.png)  
 磁盘信息以`lsblk`获得  
-![](/Users/kuanlu/Desktop/嵌入式系统/snap1005.png)
+![](http://7xs84e.com1.z0.glb.clouddn.com/snap1005.png)
 	 
 |硬件|参数|
 |--|--|
@@ -294,13 +294,13 @@ CPU信息通过`lscpu`命令获得
 
 4. 从终端登陆树莓派的Linux  
 用户名：pr 密码：raspberry
-![](/Users/kuanlu/Desktop/嵌入式系统/snap2.png)
+![](http://7xs84e.com1.z0.glb.clouddn.com/snap2.png)
 5. 配置网络和/或WiFi，从pcDuino和PC两端证明网络已连接  
 	- 采用网线连接Windows PC与树莓派的方式，首先配置Windows的网络设置  
 		- 打开网络连接，右键WLAN属性，勾选如下，将家庭网络连接设为以太网
-		![](/Users/kuanlu/Desktop/嵌入式系统/snap4.png)
+		![](http://7xs84e.com1.z0.glb.clouddn.com/snap4.png)
 		- cmd下通过`ipconfig`查看本机IP地址
-		![](/Users/kuanlu/Desktop/嵌入式系统/snap3.png)
+		![](http://7xs84e.com1.z0.glb.clouddn.com/snap3.png)
 	- 将网线两端分别连接PC和树莓派
 	- 配置树莓派下的网络设置  
 		- 终端下修改/etc/network/interfaces如下
@@ -319,15 +319,15 @@ CPU信息通过`lscpu`命令获得
 	- 重启树莓派
 	- 验证
 		- 树莓派ping PC的IP地址（注意要关掉PC端的防火墙）
-		![](/Users/kuanlu/Desktop/嵌入式系统/snap5.png)
+		![](http://7xs84e.com1.z0.glb.clouddn.com/snap5.png)
 		- PC ping 树莓派的IP地址  
-		![](/Users/kuanlu/Desktop/嵌入式系统/snap8.png)  
+		![](http://7xs84e.com1.z0.glb.clouddn.com/snap8.png)  
 		配置树莓派的SSH，可尝试采用各种不同的认证方式；
 6. 从PC通过SSH登陆pcDuino；
 	- PC端打开Putty，设置如下,HostName是主机地址也就是树莓派的地址，端口默认22
-		![](/Users/kuanlu/Desktop/嵌入式系统/snap6.png)  
+		![](http://7xs84e.com1.z0.glb.clouddn.com/snap6.png)  
 	- 登录输入用户名：pi，密码：raspberry
-		![](/Users/kuanlu/Desktop/嵌入式系统/snap7.png)  
+		![](http://7xs84e.com1.z0.glb.clouddn.com/snap7.png)  
 7. 看到多个不同端口的登陆（本机键盘/屏幕、串口和SSH)
 	- 在任何一个终端输入`w`命令显示如下
 	<pre><code>pi@raspberrypi:~$ w
@@ -338,9 +338,9 @@ pi       pts/0    192.168.137.1    13:44   10:46   1.31s  1.31s -bash
 pi       pts/1    :0.0             13:44   11:25   0.67s  0.67s /bin/bash</pre></code>
 	- 并运用Linux的write来互相通信  
 		- 使用串口登录的终端与ssh登录的PC和raspberry自带终端通信
-		![](/Users/kuanlu/Desktop/嵌入式系统/snap9.png)
+		![](http://7xs84e.com1.z0.glb.clouddn.com/snap9.png)
 		- 使用ssh登录的终端与串口登录的终端和raspberry自带终端通信
-		![](/Users/kuanlu/Desktop/嵌入式系统/snap10.png)
+		![](http://7xs84e.com1.z0.glb.clouddn.com/snap10.png)
 		- 使用rasberry自带终端和ssh登录终端和串口登录终端通信
 8. 配置嵌入式板卡上的SAMBA客户端，使它能访问PC上共享的目录
 	- raspberry 上安装samba
@@ -367,32 +367,32 @@ sudo /etc/init.d/samba retsart
    输入命令：`sudo useradd lucas`这时系统就新建了一个名为lucas的用户，在/etc/samba/文件夹下建立smbpasswd文件，`sudo touch /etc/samba/smbpasswd`再给samba添加用户名为lucas的用户：`sudo smbpasswd -a lucas` 输入密码的，设完了显示：Added user lucas
    - 使用samba
  	在Windows下的网络目录中可以看到名为RASPBERRYPI的计算机，其中的tmp文件夹就是共享文件夹
- 	![](/Users/kuanlu/Desktop/嵌入式系统/snap12.png)
+ 	![](http://7xs84e.com1.z0.glb.clouddn.com/snap12.png)
  	将文件拖入该文件夹，在raspberry端就会在设定的目录下出现，下图中可以看到由添加的用户lucas传输到文件夹中的pcDuino.txt  
- 	![](/Users/kuanlu/Desktop/嵌入式系统/snap11.png)
+ 	![](http://7xs84e.com1.z0.glb.clouddn.com/snap11.png)
 12. 通过sftp传递；
 	- 下载FileZilla
 	<pre><code>sudo apt-get install filezilla</code></pre>
 	- 进入文件，站点管理器，新建站点，ip地址为树莓派自己的IP地址，登录选项为normal输入用户名pi和密码raspberry  
-	![](/Users/kuanlu/Desktop/嵌入式系统/snap002.png)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/snap002.png)
 	- 直接将文件拖动到服务器端的目录中即可实现文件共享
-	![](/Users/kuanlu/Desktop/嵌入式系统/snap003.png)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/snap003.png)
 13. 通过串口XModem协议传递；
 	- 在PC机和树莓派上安装配置minicom  
 		- 树莓派上用`sudo apt-get install`安装minicom， 首先配置PC机上的minicom，设置上传，下载文件夹
-	![](/Users/kuanlu/Desktop/嵌入式系统/snap14.png)  
+	![](http://7xs84e.com1.z0.glb.clouddn.com/snap14.png)  
 		- 然后配置树莓派上的minicom, 设置上传下载文件夹  
-	![](/Users/kuanlu/Desktop/嵌入式系统/snap16.png)  
+	![](http://7xs84e.com1.z0.glb.clouddn.com/snap16.png)  
 		- 设置串口（改为树莓派的串口ttyAMA0）
-	![](/Users/kuanlu/Desktop/嵌入式系统/snap15.png)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/snap15.png)
 	- PC->树莓派传输
 		- 打开PC和树莓派上的minicom
 		- 在PC端打开minicom，按下Meta-Z进入选项界面，选择S后选择xmodem，会出来文件选择界面，选择想要传输的文件并选择okay
-		![](/Users/kuanlu/Desktop/嵌入式系统/snap17.png)
+		![](http://7xs84e.com1.z0.glb.clouddn.com/snap17.png)
 		- 在树莓派端打开minicom，Meta-Z进入选项界面后选择R，输入待接收文件名
-		![](/Users/kuanlu/Desktop/嵌入式系统/xmodem.png)
+		![](http://7xs84e.com1.z0.glb.clouddn.com/xmodem.png)
 		- 传输结果
-		![](/Users/kuanlu/Desktop/嵌入式系统/xmodem1.png)
+		![](http://7xs84e.com1.z0.glb.clouddn.com/xmodem1.png)
 	- 树莓派->PC
 		- 调换PC端和树莓派端的收发模式和顺序即可 
 14. 三种文件传递方式对比（82M的文件测试）
@@ -413,7 +413,7 @@ sudo /etc/init.d/samba retsart
 	- 运行一下命令以验证环境是否搭建成功
 	<pre><code>arm-linux-gnueabihf-gcc -v</code></pre>
 	如果搭建成功，显示如下
-	![](/Users/kuanlu/Desktop/嵌入式系统/snap18.png)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/snap18.png)
 16. 交叉编译C语言的浮点运算程序到pcDuino上去运行，证明所编译的程序是ARM的；
 	- 首先编辑一段带有浮点数运算的源代码
 	- 在终端中用交叉编译工具编译
@@ -483,16 +483,16 @@ main:
 	.ident	"GCC: (crosstool-NG linaro-1.13.1+bzr2650 - Linaro GCC 2014.03) 4.8.3 20140303 (prerelease)"
 	.section	.note.GNU-stack,"",%progbits</code></pre>
 	- 通过sftp上传到板子上直接运行，结果如下
-	![](/Users/kuanlu/Desktop/嵌入式系统/snap19.png)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/snap19.png)
 17. 尝试嵌入式板卡上的三个语言的开发环境：C/C++、Python和Java；
 	- C/C++ 开发环境，CodeBlocks,通过`sudo apt-get install codeblocks`安装
-	![](/Users/kuanlu/Desktop/嵌入式系统/C++code.png)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/C++code.png)
 	运行结果  
-	![](/Users/kuanlu/Desktop/嵌入式系统/C++res.png)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/C++res.png)
 	- python 开发环境，文本编辑器，编辑完成了直接终端使用`python helloworld.py`执行
-	![](/Users/kuanlu/Desktop/嵌入式系统/python.png)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/python.png)
 	- Java 开发环境，文本编辑器，编辑完了直接终端使用`javac Hello.java`和`java Hello`执行
-	![](/Users/kuanlu/Desktop/嵌入式系统/java.png)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/java.png)
 18. x-window（通过SSH）远程访问图形桌面。
 	- 首先下载Windows下的X server: [X Win32](http://download.csdn.net/download/salmon5/5037800)
 	- 安装完成后打开Putty，勾选ssh选项中的X11中的enable X11 forwarding
@@ -501,14 +501,14 @@ main:
 	- 用Putty ssh登录树莓派用以下命令开启x11 forwarding
 	<pre><code>xterm -ls</code></pre>
 	执行后会自动打开X-Win32的终端，在那个终端中就可以执行图形化引用程序了，比如说codeblocks IDE
-	![](/Users/kuanlu/Desktop/嵌入式系统/snap21.png)
-	![](/Users/kuanlu/Desktop/嵌入式系统/snap20.png)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/snap21.png)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/snap20.png)
 
 ---
 
 # 拓展步骤
 1. 尝试HDMI-VGA线  
-	![](/Users/kuanlu/Desktop/嵌入式系统/hdmi.png)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/hdmi.png)
 2. 配置SAMBA 见上文samba配置文件，已经实现了PC端写共享文件
 5. 嵌入式GUI IDE C++ IDE codeblocks
-	![](/Users/kuanlu/Desktop/嵌入式系统/C++code.png)
+	![](http://7xs84e.com1.z0.glb.clouddn.com/C++code.png)
